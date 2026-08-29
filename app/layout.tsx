@@ -6,7 +6,7 @@ const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://localhost:3000'),
+  metadataBase: new URL('https://gdpu-innovation-practice.carychan.chatgpt.site'),
   title: '广东药科大学创新实践协会｜2026 招新',
   description: '把想法焊成现实，用代码创造世界。探索创协真实作品、竞赛战绩与招新方式。',
   icons: { icon: '/media/association-logo.jpg' },
