@@ -37,5 +37,7 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+/output/
+/.playwright-cli/
 /.openai/site-build.tar.gz
 /.openai/deployment-screenshot.png
