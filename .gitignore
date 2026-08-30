@@ -38,6 +38,7 @@ next-env.d.ts
 /outputs/
 /work/
 /output/
+/tmp/
 /.playwright-cli/
 /.openai/site-build.tar.gz
 /.openai/deployment-screenshot.png
