@@ -115,6 +115,9 @@ export default function Home() {
   const announce = useCallback((scene: UniverseScene) => { clearTimeout(pulseTimer.current); setScenePulse(scene); pulseTimer.current = window.setTimeout(() => setScenePulse(null), 1450); }, []);
   const navigateTo = useCallback((target: SceneId, projectIndex?: number) => {
     if (transition.phase !== 'idle') return;
+    setActiveAchievement(null);
+    setActiveMedia(null);
+    setActiveQr(null);
     if (projectIndex !== undefined) setActiveProject(projectIndex);
     setMenuOpen(false); setTransition({ phase: 'closing', target }); void signal('shift');
     const scene = scenes.find(item => item.id === target) ?? scenes[0];
