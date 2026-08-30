@@ -199,6 +199,16 @@ const projectIcons = {
   home: Zap,
 };
 
+const githubPagesBase = '/gdpu-innovation-practice';
+
+function assetUrl(path: string) {
+  if (typeof window !== 'undefined' && window.location.hostname.endsWith('github.io')) {
+    return `${githubPagesBase}${path}`;
+  }
+
+  return path;
+}
+
 export default function Home() {
   const projectRailRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef({ active: false, startX: 0, scrollLeft: 0 });
@@ -318,7 +328,7 @@ export default function Home() {
 
       <header className="topbar">
         <a className="brand" href="#top" aria-label="返回首页" onClick={closeMenu}>
-          <img src="/media/association-logo.jpg" alt="广东药科大学创新实践协会会徽" />
+          <img src={assetUrl('/media/association-logo.jpg')} alt="广东药科大学创新实践协会会徽" />
           <span>
             <b>GDP·U 创新实践协会</b>
             <small>INNOVATION PRACTICE ASSOCIATION</small>
@@ -359,11 +369,11 @@ export default function Home() {
           <div className="visual-orbit orbit-one" />
           <div className="visual-orbit orbit-two" />
           <figure className="hero-photo main-photo">
-            <img src="/media/team-lab.jpg" alt="创新实践协会成员在实验室合影" />
+            <img src={assetUrl('/media/team-lab.jpg')} alt="创新实践协会成员在实验室合影" />
             <figcaption>TEAM / 2025</figcaption>
           </figure>
           <figure className="hero-photo device-photo">
-            <img src="/media/balance-car.jpg" alt="车载平衡滚球运动控制系统" />
+            <img src={assetUrl('/media/balance-car.jpg')} alt="车载平衡滚球运动控制系统" />
             <figcaption>BUILD / 01</figcaption>
           </figure>
           <div className="signal-card"><CircuitBoard /><span>HARDWARE<br />ONLINE</span><i /></div>
@@ -432,7 +442,7 @@ export default function Home() {
             return (
               <article className="project-card" key={project.id} onMouseMove={handleTilt} onMouseLeave={resetTilt}>
                 <div className="project-image-wrap">
-                  <img src={project.image} alt={project.title} loading={index > 1 ? 'lazy' : undefined} draggable="false" />
+                  <img src={assetUrl(project.image)} alt={project.title} loading={index > 1 ? 'lazy' : undefined} draggable="false" />
                   <span className="project-number">0{index + 1}</span>
                   <div className="project-scan" aria-hidden="true" />
                 </div>
@@ -487,7 +497,7 @@ export default function Home() {
           <div className="video-grid">
             {mediaItems.map((item, index) => (
               <button className="video-card" type="button" key={item.id} onClick={() => setActiveMedia(item)} data-reveal>
-                <img src={item.poster} alt="" loading="lazy" />
+                <img src={assetUrl(item.poster ?? item.src)} alt="" loading="lazy" />
                 <span className="video-shade" />
                 <span className="play-button"><Play fill="currentColor" /></span>
                 <span className="video-meta"><small>0{index + 1} / FILM</small><b>{item.title}</b><em>{item.subtitle}</em></span>
@@ -506,10 +516,10 @@ export default function Home() {
           </div>
         </div>
         <div className="film-wall" data-reveal>
-          <figure className="film film-a"><img src="/media/activity-team.jpg" alt="协会成员在竞赛期间交流协作" loading="lazy" /><figcaption>COMPETITION DAY</figcaption></figure>
-          <figure className="film film-b"><img src="/media/activity-share.jpg" alt="创新实践协会技术分享会现场" loading="lazy" /><figcaption>SHARE & LEARN</figcaption></figure>
-          <figure className="film film-c"><img src="/media/activity-tech.jpg" alt="协会科技节活动现场" loading="lazy" /><figcaption>TECH FESTIVAL</figcaption></figure>
-          <figure className="film film-d"><img src="/media/team-lab.jpg" alt="创新实践协会成员实验室合影" loading="lazy" /><figcaption>ONE TEAM</figcaption></figure>
+          <figure className="film film-a"><img src={assetUrl('/media/activity-team.jpg')} alt="协会成员在竞赛期间交流协作" loading="lazy" /><figcaption>COMPETITION DAY</figcaption></figure>
+          <figure className="film film-b"><img src={assetUrl('/media/activity-share.jpg')} alt="创新实践协会技术分享会现场" loading="lazy" /><figcaption>SHARE & LEARN</figcaption></figure>
+          <figure className="film film-c"><img src={assetUrl('/media/activity-tech.jpg')} alt="协会科技节活动现场" loading="lazy" /><figcaption>TECH FESTIVAL</figcaption></figure>
+          <figure className="film film-d"><img src={assetUrl('/media/team-lab.jpg')} alt="创新实践协会成员实验室合影" loading="lazy" /><figcaption>ONE TEAM</figcaption></figure>
         </div>
         <blockquote data-reveal>“你可以从不会开始，但不会一个人卡在那里。”</blockquote>
       </section>
@@ -540,7 +550,7 @@ export default function Home() {
           <div className="qr-stack" data-reveal>
             {recruitmentLinks.map((item, index) => (
               <button className="qr-card" key={item.id} type="button" onClick={() => setActiveQr(item)}>
-                <div className="qr-image"><img src={item.image} alt={`${item.title}二维码`} /><span><Maximize2 /> 放大</span></div>
+                <div className="qr-image"><img src={assetUrl(item.image)} alt={`${item.title}二维码`} /><span><Maximize2 /> 放大</span></div>
                 <div><small>STEP 0{index + 1}</small><h3>{item.title}</h3><p>{item.note}</p></div>
                 <ExternalLink className="qr-arrow" />
               </button>
@@ -551,7 +561,7 @@ export default function Home() {
 
       <footer>
         <div className="footer-brand">
-          <img src="/media/association-logo.jpg" alt="创新实践协会会徽" />
+          <img src={assetUrl('/media/association-logo.jpg')} alt="创新实践协会会徽" />
           <span><b>广东药科大学创新实践协会</b><small>兴趣驱动 · 自主实践 · 重在过程</small></span>
         </div>
         <p>© 2026 GDP·U INNOVATION PRACTICE ASSOCIATION</p>
@@ -562,7 +572,7 @@ export default function Home() {
         <DialogContent className="media-dialog award-dialog" showCloseButton>
           <DialogTitle>{activeAchievement?.title}</DialogTitle>
           <DialogDescription>{activeAchievement?.year} · {activeAchievement?.level}</DialogDescription>
-          {activeAchievement && <img src={activeAchievement.image} alt={`${activeAchievement.title} ${activeAchievement.level}证书`} />}
+          {activeAchievement && <img src={assetUrl(activeAchievement.image)} alt={`${activeAchievement.title} ${activeAchievement.level}证书`} />}
         </DialogContent>
       </Dialog>
 
@@ -571,8 +581,8 @@ export default function Home() {
           <DialogTitle>{activeMedia?.title}</DialogTitle>
           <DialogDescription>{activeMedia?.subtitle}</DialogDescription>
           {activeMedia && (
-            <video src={activeMedia.src} poster={activeMedia.poster} controls autoPlay playsInline>
-              <track kind="captions" src={activeMedia.captions} srcLang="zh-CN" label="中文场景说明" default />
+            <video src={assetUrl(activeMedia.src)} poster={activeMedia.poster ? assetUrl(activeMedia.poster) : undefined} controls autoPlay playsInline>
+              <track kind="captions" src={assetUrl(activeMedia.captions)} srcLang="zh-CN" label="中文场景说明" default />
             </video>
           )}
         </DialogContent>
@@ -582,7 +592,7 @@ export default function Home() {
         <DialogContent className="qr-dialog" showCloseButton>
           <DialogTitle>{activeQr?.title}</DialogTitle>
           <DialogDescription>{activeQr?.note}；手机端可长按保存二维码。</DialogDescription>
-          {activeQr && <img src={activeQr.image} alt={`${activeQr.title}二维码大图`} />}
+          {activeQr && <img src={assetUrl(activeQr.image)} alt={`${activeQr.title}二维码大图`} />}
         </DialogContent>
       </Dialog>
     </main>
