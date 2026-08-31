@@ -38,7 +38,7 @@ export function UniverseGate({ logoSrc, onEnter }: UniverseGateProps) {
       <div className="gate-stars" aria-hidden="true" />
       <div className="gate-aperture" aria-hidden="true"><i /><i /><i /></div>
       <div className="gate-console">
-        <div className="gate-status"><Sparkles /> GDP·U SIMULATION SYSTEM <span>ONLINE</span></div>
+        <div className="gate-status"><Sparkles /> GDPU SIMULATION SYSTEM <span>ONLINE</span></div>
         <div className="gate-core">
           <span className="gate-ring ring-a" />
           <span className="gate-ring ring-b" />
