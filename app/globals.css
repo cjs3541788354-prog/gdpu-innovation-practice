@@ -2098,12 +2098,24 @@ button, a { -webkit-tap-highlight-color: transparent; }
   z-index: 9999;
   display: grid;
   place-items: center;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
   overflow: hidden;
   color: #f7f4ed;
   background:
     radial-gradient(circle at 50% 42%, rgb(118 87 195 / 26%), transparent 30%),
     radial-gradient(circle at 18% 74%, rgb(45 214 238 / 11%), transparent 24%),
     #05030d;
+}
+
+.universe-gate.is-checking .gate-console,
+.universe-gate.is-checking .gate-coordinates {
+  opacity: 0;
 }
 
 .gate-stars {
@@ -2151,6 +2163,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   width: min(680px, calc(100vw - 34px));
   padding: 30px;
   text-align: center;
+  transition: opacity .24s ease;
 }
 
 .gate-status {
@@ -2216,7 +2229,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @keyframes gate-drift { to { transform: rotate(3deg) scale(1.05); } }
 @keyframes gate-collapse { 55% { transform: scale(.06) rotate(18deg); opacity: 1; } 100% { transform: scale(7); opacity: 0; } }
 @keyframes gate-console-out { to { opacity: 0; transform: scale(.94); filter: blur(9px); } }
-@keyframes gate-whiteout { 0%, 46% { opacity: 1; } 58% { background: #dff9ff; } 100% { opacity: 0; visibility: hidden; } }
+@keyframes gate-whiteout { 0%, 82% { opacity: 1; } 58% { background: #dff9ff; } 100% { opacity: 0; visibility: hidden; } }
 
 @media (max-width: 680px) {
   .gate-console { padding: 20px; }

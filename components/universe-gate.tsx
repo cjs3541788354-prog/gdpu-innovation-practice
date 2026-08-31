@@ -11,7 +11,7 @@ type UniverseGateProps = {
 };
 
 export function UniverseGate({ logoSrc, onEnter }: UniverseGateProps) {
-  const [phase, setPhase] = useState<'ready' | 'departing' | 'hidden'>('hidden');
+  const [phase, setPhase] = useState<'checking' | 'ready' | 'departing' | 'hidden'>('checking');
 
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -19,6 +19,13 @@ export function UniverseGate({ logoSrc, onEnter }: UniverseGateProps) {
     const frame = window.requestAnimationFrame(() => setPhase(reduced || visited ? 'hidden' : 'ready'));
     return () => window.cancelAnimationFrame(frame);
   }, []);
+
+  useEffect(() => {
+    if (phase === 'hidden') return;
+    const previousOverflow = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = 'hidden';
+    return () => { document.documentElement.style.overflow = previousOverflow; };
+  }, [phase]);
 
   const finish = (withSound: boolean) => {
     window.sessionStorage.setItem('innovation-universe-entered', '1');
