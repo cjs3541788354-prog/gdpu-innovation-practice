@@ -67,7 +67,7 @@ const mediaItems: MediaItem[] = [
 ];
 const recruitmentLinks: RecruitmentLink[] = [
   { id: 'form', title: '填写报名问卷', note: '提交你的方向偏好与联系方式', image: '/media/qr-form.png' },
-  { id: 'group', title: '加入咨询群', note: '和学长学姐面对面聊聊', image: '/media/qr-group.png' },
+  { id: 'group', title: '加入咨询群', note: 'QQ群：1107926349 · 微信扫码进群咨询', image: '/media/qr-group.png' },
 ];
 const practiceGroups: PracticeGroup[] = [
   { id: 'algorithm', code: 'GROUP 01', title: '算法组', english: 'ALGORITHM', responsibility: '视觉识别 · 数据处理 · 嵌入式 AI', intro: '让设备看懂画面、理解数据，并把模型真正部署到项目现场。', starterTasks: ['学习 Python、OpenCV 与基础数据处理', '参与数据整理、标注、训练和模型评估', '把算法部署到边缘设备并参与现场调试'], gains: ['编程与算法验证能力', '从数据到部署的 AI 工程链路', '跨组沟通与问题拆解能力'], future: '为人工智能、计算机视觉、数据分析和嵌入式 AI 方向建立项目基础。', projectIds: ['edge-ai', 'balance-car', 'medicine-car', 'cervical-care', 'waist-posture'], icon: 'algorithm' },
